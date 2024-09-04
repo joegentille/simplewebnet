@@ -6,9 +6,6 @@ pipeline {
             steps {
                 checkout scm
             }
-        }
-        
-        stage('Example') {
             steps {
                 script {
                     def output = sh(returnStdout: true, script: 'pwd')
@@ -16,5 +13,14 @@ pipeline {
                 }
             }
         }
+
+        // stage('Example') {
+        //     steps {
+        //         script {
+        //             def output = sh(returnStdout: true, script: 'pwd')
+        //             echo "Output: ${output}"
+        //         }
+        //     }
+        // }
     }
 }
