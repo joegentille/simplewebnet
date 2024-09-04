@@ -5,12 +5,7 @@ pipeline {
         stage('Checkout'){
             steps {
                 checkout scm
-            }
-            steps {
-                script {
-                    def output = sh(returnStdout: true, script: 'pwd')
-                    echo "Output: ${output}"
-                }
+                sh 'ls -lah'
             }
         }
 
