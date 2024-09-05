@@ -34,10 +34,10 @@ pipeline {
 
         stage('Publish') {
             steps {
-                sh 'dotnet publish --configuration Release --output artifacts'
+                sh 'dotnet publish --no-restore --configuration Release --output .\\publish'
             }
         }
-
+//bin\Release\net6.0\publish\
         // stage('Example') {
         //     steps {
         //         script {
@@ -46,5 +46,10 @@ pipeline {
         //         }
         //     }
         // }
+    }
+    post {
+        success {
+            echo 'Build, test, and publish successful!'
+        }
     }
 }
