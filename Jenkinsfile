@@ -15,6 +15,26 @@ pipeline {
             steps {
                 checkout scm
                 sh 'ls -lah'
+                sh 'pwd'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'dotnet restore'
+                sh 'dotnet build --configuration Release'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'dotnet test --configuration Release'
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                sh 'dotnet publish --configuration Release --output artifacts'
             }
         }
 
